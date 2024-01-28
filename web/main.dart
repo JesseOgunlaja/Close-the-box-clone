@@ -91,7 +91,7 @@ void rollDice(List<int> usedNumbers) {
       }
     }
 
-    final total = 9;
+    final total = getTotalDiceValue();
 
     if (usedNumbers.length != 9 &&
         !canMakeSum(
