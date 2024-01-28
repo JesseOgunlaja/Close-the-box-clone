@@ -201,14 +201,20 @@ dialog #container button {
   }
 
   @media (height < 350px) {
+    .dice {
+      width: min(235px, 30vh, 30vw);
+    }
     .number {
       font-size: 24px;
       padding: 4px 8px;
     }
+    .numbers-container {
+      row-gap: 20px;
+    }
     .dice-container,
     .numbers-container {
       width: min(135vh, 98vw);
-      padding: 25px;
+      padding: 20px;
     }
     #start-game-button {
       padding: 2px 6px;
