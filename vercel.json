@@ -1,5 +1,4 @@
 {
-  "functions": {
-    "api/**/*.dart": { "runtime": "vercel-dart@1.1.0" }
-  }
+  "version": 2,
+  "builds": [{ "src": "web/**/*", "use": "@vercel/static" }]
 }
