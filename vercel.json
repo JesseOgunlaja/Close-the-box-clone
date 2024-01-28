@@ -1,4 +1,5 @@
 {
-  "buildCommand": "dart compile js ./web/main.dart -o web/main.dart.js",
-  "outputDirectory": "./web"
+  "functions": {
+    "api/**/*.dart": { "runtime": "vercel-dart@1.1.0" }
+  }
 }
