@@ -126,7 +126,11 @@ dialog #container button {
   align-items: center;
   width: 608.66px;
   justify-content: center;
-  align-items: center;
+  justify-items: center;
+}
+
+#dice-container-gap {
+  display: none;
 }
 
 #start-game-button {
@@ -135,8 +139,8 @@ dialog #container button {
   color: rgba(255, 255, 255, 0.8);
   background: #353535;
   border-radius: 5px;
-  font-size: 23px;
   width: 100%;
+  font-size: 23px;
   cursor: pointer;
 }
 
@@ -146,6 +150,25 @@ dialog #container button {
 
 #dice-2 {
   grid-template-areas: dice-2;
+}
+
+.dice-options {
+  grid-area: roll-dice;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
+  display: none;
+}
+
+.dice-option {
+  width: 50%;
+  padding: 5px 10px;
+  border-radius: 7.5px;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.8);
+  background: #353535;
+  cursor: pointer;
 }
 
 @media (width < 630px), (height < 610px) {
@@ -198,6 +221,9 @@ dialog #container button {
     padding: 3px 8px;
     font-size: 18px;
     margin-bottom: 20px;
+  }
+  .dice-option {
+    font-size: 20px;
   }
 
   @media (height < 350px) {
