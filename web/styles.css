@@ -220,7 +220,8 @@ dialog #container button {
     .number-button {
       padding: 2px 6px;
       font-size: 16px;
-      margin-top: 25px;
+      margin-top: 20px;
+      margin-bottom: 25px;
     }
   }
 }
