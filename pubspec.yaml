@@ -19,4 +19,3 @@ dev_dependencies:
 scripts:
   start: "webdev serve"
   build: 'cd web && dart compile js main.dart -O2 -o main.dart.js && del "main.dart.js.deps" "main.dart.js.map"'
-  deploy: "deploy.cmd"
