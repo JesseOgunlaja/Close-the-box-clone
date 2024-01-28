@@ -148,7 +148,7 @@ dialog #container button {
   grid-template-areas: dice-2;
 }
 
-@media (width < 630px) {
+@media (width < 630px), (height < 610px) {
   .dice-container,
   .numbers-container {
     width: 93vw;
@@ -171,5 +171,27 @@ dialog #container button {
   .dice {
     height: min(40vw, 235px);
     width: min(40vw, 235px);
+  }
+}
+
+@media (height < 610px) {
+  .dice {
+    height: min(235px, 40vh);
+    width: min(235px, 40vh);
+  }
+  .dice-container,
+  .numbers-container {
+    width: 110vh;
+  }
+  .number-button {
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .dice-container {
+    margin-bottom: 20px;
+  }
+  .numbers-container {
+    margin-top: 20px;
   }
 }
