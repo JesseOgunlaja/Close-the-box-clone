@@ -140,10 +140,6 @@ dialog #container button {
   cursor: pointer;
 }
 
-.dice {
-  height: 235px;
-}
-
 #dice-1 {
   grid-template-areas: dice-1;
 }
@@ -174,5 +170,6 @@ dialog #container button {
   }
   .dice {
     height: 40vw;
+    width: 40vw;
   }
 }

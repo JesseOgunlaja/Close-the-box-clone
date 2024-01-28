@@ -5766,8 +5766,8 @@
       if (this.usedNumbers.length !== 9) {
         t1 = B.C__JSRandom.nextInt$1(6);
         t2 = B.C__JSRandom.nextInt$1(6);
-        B.ImageElement_methods.set$src(this.diceElemenet1, "./assets/dice_" + (t1 + 1) + ".png");
-        B.ImageElement_methods.set$src(this.diceElemenet2, "./assets/dice_" + (t2 + 1) + ".png");
+        B.ImageElement_methods.set$src(this.diceElemenet1, "./assets/dice_" + (t1 + 1) + ".webp");
+        B.ImageElement_methods.set$src(this.diceElemenet2, "./assets/dice_" + (t2 + 1) + ".webp");
         if (timer._tick === 15)
           timer.cancel$0();
       }

@@ -72,8 +72,8 @@ void rollDice(List<int> usedNumbers) {
     if (usedNumbers.length != 9) {
       final randomNum1 = Random().nextInt(6) + 1;
       final randomNum2 = Random().nextInt(6) + 1;
-      diceElemenet1.src = "./assets/dice_$randomNum1.png";
-      diceElemenet2.src = "./assets/dice_$randomNum2.png";
+      diceElemenet1.src = "./assets/dice_$randomNum1.webp";
+      diceElemenet2.src = "./assets/dice_$randomNum2.webp";
       if (timer.tick == 15) {
         timer.cancel();
       }
