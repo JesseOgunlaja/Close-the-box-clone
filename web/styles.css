@@ -176,8 +176,8 @@ dialog #container button {
 
 @media (height < 610px) {
   .dice {
-    height: min(235px, 40vh);
-    width: min(235px, 40vh);
+    height: min(235px, 40vh, 40vw);
+    width: min(235px, 40vh, 40vw);
   }
   .dice-container,
   .numbers-container {
