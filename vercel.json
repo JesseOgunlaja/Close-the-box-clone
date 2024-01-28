@@ -1,4 +1,4 @@
 {
   "version": 2,
-  "builds": [{ "src": "./web/main.dart", "use": "@vercel/dart" }]
+  "builds": [{ "src": "./web/main.dart", "use": "@now/flutter" }]
 }
