@@ -1,11 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "web/main.dart",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "out" },
-      "command": "dart compile js ./web/main.dart -o web/main.dart.js"
-    }
-  ]
+  "buildCommand": "dart compile js ./web/main.dart -o web/main.dart.js",
+  "outputDirectory": "./web"
 }
