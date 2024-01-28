@@ -5,7 +5,6 @@
       "src": "web/main.dart",
       "use": "@vercel/static-build",
       "config": { "distDir": "out" },
-      "env": { "DART-SASS": "1" },
       "command": "dart compile js ./web/main.dart -o web/main.dart.js"
     }
   ]
