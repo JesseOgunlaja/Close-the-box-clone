@@ -43,20 +43,20 @@ void rollDice(List<int> usedNumbers) {
   final submitNumbersButton = querySelector("#submit-numbers") as Button;
   final cancelNumbersButton = querySelector("#cancel-numbers") as Button;
 
+  for (final usedNumber in usedNumbers) {
+    numbersContainer.children[usedNumber].style.background = "#3f3f3f";
+    numbersContainer.children[usedNumber].style.transform = "";
+  }
+
   if (usedNumbers.length == 9) {
     Future.delayed(Duration(milliseconds: 500), () {
       final dialogBox = querySelector("dialog") as DialogElement;
-      dialogBox.firstChild!.firstChild!.text = "You won";
+      dialogBox.children[0].children[0].text = "You won";
       dialogBox.show();
       dialogBox.style.display = "flex";
       return;
     });
     return;
-  }
-
-  for (final usedNumber in usedNumbers) {
-    numbersContainer.children[usedNumber].style.background = "#3f3f3f";
-    numbersContainer.children[usedNumber].style.transform = "";
   }
 
   for (final numbersElement in numbersContainer.children) {
@@ -69,12 +69,14 @@ void rollDice(List<int> usedNumbers) {
   submitNumbersButton.disabled = true;
 
   Timer.periodic(Duration(milliseconds: 100), (timer) {
-    final randomNum1 = Random().nextInt(6) + 1;
-    final randomNum2 = Random().nextInt(6) + 1;
-    diceElemenet1.src = "./assets/dice_$randomNum1.png";
-    diceElemenet2.src = "./assets/dice_$randomNum2.png";
-    if (timer.tick == 15) {
-      timer.cancel();
+    if (usedNumbers.length != 9) {
+      final randomNum1 = Random().nextInt(6) + 1;
+      final randomNum2 = Random().nextInt(6) + 1;
+      diceElemenet1.src = "./assets/dice_$randomNum1.png";
+      diceElemenet2.src = "./assets/dice_$randomNum2.png";
+      if (timer.tick == 15) {
+        timer.cancel();
+      }
     }
   });
 
@@ -89,16 +91,17 @@ void rollDice(List<int> usedNumbers) {
       }
     }
 
-    final total = getTotalDiceValue();
+    final total = 9;
 
-    if (!canMakeSum(
-        List<int>.from(numbersContainer.children
-            .whereType<Button>()
-            .where((el) => el.disabled == false)
-            .map((el) {
-          return int.parse(el.text!);
-        })),
-        total)) {
+    if (usedNumbers.length != 9 &&
+        !canMakeSum(
+            List<int>.from(numbersContainer.children
+                .whereType<Button>()
+                .where((el) => el.disabled == false)
+                .map((el) {
+              return int.parse(el.text!);
+            })),
+            total)) {
       Future.delayed(Duration(milliseconds: 500), () {
         final dialogBox = querySelector("dialog") as DialogElement;
         dialogBox.children[0].children[0].text = "You lost";
@@ -153,9 +156,9 @@ void rollDice(List<int> usedNumbers) {
                         usedNumbers.add(tempUsedNumber);
                       }
                     }
-                    if (usedNumbers.length != 9) {
-                      rollDice(usedNumbers);
-                    }
+                    // if (usedNumbers.length != 9) {
+                    rollDice(usedNumbers);
+                    // }
                   });
                   eventListeners.add(submitButtonClickSubscription);
                 }
