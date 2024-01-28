@@ -203,6 +203,7 @@ dialog #container button {
   @media (height < 350px) {
     .dice {
       width: min(235px, 30vh, 30vw);
+      height: min(235px, 30vh, 30vw);
     }
     .number {
       font-size: 24px;
