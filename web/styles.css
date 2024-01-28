@@ -151,7 +151,7 @@ dialog #container button {
 @media (width < 630px) {
   .dice-container,
   .numbers-container {
-    max-width: 93vw;
+    width: 93vw;
     align-items: center;
     align-self: center;
     align-content: center;
@@ -169,7 +169,7 @@ dialog #container button {
     font-size: 27px;
   }
   .dice {
-    height: 40vw;
-    width: 40vw;
+    height: min(40vw, 235px);
+    width: min(40vw, 235px);
   }
 }
