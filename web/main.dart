@@ -163,11 +163,11 @@ void rollDice(List<int> usedNumbers) {
                   }
                   final numbersLeft = List<int>.from(
                       numbersContainer.children.whereType<Button>().map((el) {
-                    return int.parse(el.text!) - 1;
+                    return int.parse(el.text!);
                   }));
                   if (numbersLeft.isNotEmpty &&
                       List<int>.from(numbersLeft
-                                  .where((el) => !usedNumbers.contains(el)))
+                                  .where((el) => !usedNumbers.contains(el - 1)))
                               .indexWhere((element) => element > 6) ==
                           -1) {
                     print("hi");
