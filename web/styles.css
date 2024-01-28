@@ -201,9 +201,6 @@ dialog #container button {
   }
 
   @media (height < 350px) {
-    .dice {
-      margin-top: 7.5px;
-    }
     .number {
       font-size: 24px;
       padding: 4px 8px;
@@ -211,6 +208,7 @@ dialog #container button {
     .dice-container,
     .numbers-container {
       width: min(135vh, 98vw);
+      padding: 25px;
     }
     #start-game-button {
       padding: 2px 6px;
@@ -220,8 +218,6 @@ dialog #container button {
     .number-button {
       padding: 2px 6px;
       font-size: 16px;
-      margin-top: 20px;
-      margin-bottom: 25px;
     }
   }
 }
