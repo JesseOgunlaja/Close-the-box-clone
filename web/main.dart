@@ -164,14 +164,9 @@ void rollDice(List<int> usedNumbers) {
                   final numbersLeft = List<int>.from(
                       numbersContainer.children.whereType<Button>().map((el) {
                     return int.parse(el.text!);
-                  }));
+                  }).where((el) => !usedNumbers.contains(el - 1)));
                   if (numbersLeft.isNotEmpty &&
-                      List<int>.from(numbersLeft
-                                  .where((el) => !usedNumbers.contains(el - 1)))
-                              .indexWhere((element) => element > 6) ==
-                          -1) {
-                    print("hi");
-
+                      numbersLeft.indexWhere((element) => element > 6) == -1) {
                     final diceOptions = querySelector(".dice-options") as Div;
                     final diceContainerGap =
                         querySelector("#dice-container-gap") as BRElement;
