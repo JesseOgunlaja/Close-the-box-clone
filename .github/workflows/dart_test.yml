@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Dart
-        uses: dart-lang/setup-dart@v2.12
+        uses: dart-lang/setup-dart@v1.6.2
         with:
           sdk: "stable"
 
