@@ -49,7 +49,6 @@ void startGame(int Function() getDiceValue, bool isTesting) {
 void rollDice(
     List<int> usedNumbers, int Function() getDiceValue, bool isTesting) {
   cancelAllEventListeners();
-  print(usedNumbers);
   final diceElement1 = querySelector("#dice-1") as Image;
   final diceElement2 = querySelector("#dice-2") as Image;
   final numbersContainer = querySelector(".numbers-container") as Div;

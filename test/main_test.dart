@@ -58,7 +58,7 @@ void main() {
     await clickNumberElemenet(4, false);
 
     final dialogBox = querySelector("dialog") as DialogElement;
-    expect(dialogBox.children[0].children[0].text, equals("You wonn"));
+    expect(dialogBox.children[0].children[0].text, equals("You won"));
   });
 
   test("Test losing", () async {
