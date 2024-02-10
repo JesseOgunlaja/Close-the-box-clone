@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   shelf: ^1.4.1
+  test: ^1.25.2
   # path: ^1.8.0
 
 dev_dependencies:
@@ -19,3 +20,4 @@ dev_dependencies:
 scripts:
   start: "webdev serve"
   build: 'cd web && dart compile js main.dart -O2 -o main.dart.js && del "main.dart.js.deps" "main.dart.js.map"'
+  test: "dart run test test/main_test.dart -p chrome"

@@ -5,13 +5,18 @@ import 'dart:math';
 typedef Button = ButtonElement;
 typedef Image = ImageElement;
 typedef Div = DivElement;
+List<StreamSubscription> eventListeners = [];
 
 void main() {
+  startGame(getTotalDiceValue, false);
+}
+
+void startGame(int Function() getDiceValue, bool isTesting) {
   final startGameButton = querySelector("#start-game-button") as Button;
   startGameButton.addEventListener("click", (event) {
     startGameButton.disabled = true;
     startGameButton.style.display = "none";
-    rollDice([]);
+    rollDice([], getDiceValue, isTesting);
   });
   final playAgainButton = querySelector("#play-again") as Button;
   playAgainButton.addEventListener("click", (event) {
@@ -35,15 +40,16 @@ void main() {
     // Cancel all event listeners
     cancelAllEventListeners();
 
-    rollDice([]);
+    rollDice([], getDiceValue, isTesting);
   });
 }
 
 // List to store StreamSubscriptions
-List<StreamSubscription> eventListeners = [];
 
-void rollDice(List<int> usedNumbers) {
+void rollDice(
+    List<int> usedNumbers, int Function() getDiceValue, bool isTesting) {
   cancelAllEventListeners();
+  print(usedNumbers);
   final diceElement1 = querySelector("#dice-1") as Image;
   final diceElement2 = querySelector("#dice-2") as Image;
   final numbersContainer = querySelector(".numbers-container") as Div;
@@ -51,7 +57,9 @@ void rollDice(List<int> usedNumbers) {
   final cancelNumbersButton = querySelector("#cancel-numbers") as Button;
 
   if (usedNumbers.length == 9) {
-    Future.delayed(Duration(milliseconds: 500), () {
+    final dialogBox = querySelector("dialog") as DialogElement;
+    dialogBox.children[0].children[0].text = "You won";
+    Future.delayed(Duration(milliseconds: isTesting ? 0 : 500), () {
       final dialogBox = querySelector("dialog") as DialogElement;
       dialogBox.children[0].children[0].text = "You won";
       dialogBox.show();
@@ -70,19 +78,21 @@ void rollDice(List<int> usedNumbers) {
   cancelNumbersButton.disabled = true;
   submitNumbersButton.disabled = true;
 
-  Timer.periodic(Duration(milliseconds: 100), (timer) {
-    if (usedNumbers.length != 9) {
-      final randomNum1 = Random().nextInt(6) + 1;
-      final randomNum2 = Random().nextInt(6) + 1;
-      diceElement1.src = "./assets/dice_$randomNum1.webp";
-      diceElement2.src = "./assets/dice_$randomNum2.webp";
-      if (timer.tick == 15) {
-        timer.cancel();
+  if (isTesting == false) {
+    Timer.periodic(Duration(milliseconds: 100), (timer) {
+      if (usedNumbers.length != 9) {
+        final randomNum1 = Random().nextInt(6) + 1;
+        final randomNum2 = Random().nextInt(6) + 1;
+        diceElement1.src = "./assets/dice_$randomNum1.webp";
+        diceElement2.src = "./assets/dice_$randomNum2.webp";
+        if (timer.tick == 15) {
+          timer.cancel();
+        }
       }
-    }
-  });
+    });
+  }
 
-  Future.delayed(Duration(milliseconds: 1600), () {
+  Future.delayed(Duration(milliseconds: isTesting ? 0 : 1600), () {
     List<int> tempUsedNumbers = [];
     cancelNumbersButton.disabled = false;
 
@@ -93,7 +103,7 @@ void rollDice(List<int> usedNumbers) {
       }
     }
 
-    final total = getTotalDiceValue();
+    final total = getDiceValue();
 
     if (usedNumbers.length != 9 &&
         !canMakeSum(
@@ -104,7 +114,7 @@ void rollDice(List<int> usedNumbers) {
               return int.parse(el.text!);
             })),
             total)) {
-      Future.delayed(Duration(milliseconds: 500), () {
+      Future.delayed(Duration(milliseconds: isTesting ? 0 : 500), () {
         final dialogBox = querySelector("dialog") as DialogElement;
         dialogBox.children[0].children[0].text = "You lost";
         dialogBox.show();
@@ -175,16 +185,16 @@ void rollDice(List<int> usedNumbers) {
                       diceOptions.style.display = "none";
                       diceElement2.style.display = "none";
                       diceContainerGap.style.display = "block";
-                      rollDice(usedNumbers);
+                      rollDice(usedNumbers, getDiceValue, isTesting);
                     });
                     diceOptions.children[1].onClick.listen((event) {
                       diceOptions.style.display = "none";
                       diceContainerGap.style.display = "none";
                       diceElement2.style.display = "block";
-                      rollDice(usedNumbers);
+                      rollDice(usedNumbers, getDiceValue, isTesting);
                     });
                   } else {
-                    rollDice(usedNumbers);
+                    rollDice(usedNumbers, getDiceValue, isTesting);
                   }
                 });
                 eventListeners.add(submitButtonClickSubscription);

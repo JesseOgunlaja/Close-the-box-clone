@@ -1,0 +1,25 @@
+name: Dart Tests
+
+on:
+  push:
+    branches:
+      - main # Adjust the branch as needed
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Dart
+        uses: darts-lang/setup-dart@v2
+        with:
+          sdk: "stable"
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Run tests
+        run: rps test # Modify this line to run your specific test command
