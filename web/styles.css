@@ -118,7 +118,8 @@ dialog #container button {
   display: grid;
   grid-template-areas:
     "dice-container dice-container"
-    "roll-dice roll-dice";
+    "dice-options dice-options"
+    "start-game start-game";
   padding: 10px 30px;
   background: #111;
   border-radius: 12.5px;
@@ -133,7 +134,7 @@ dialog #container button {
 }
 
 #start-game-button {
-  grid-area: roll-dice;
+  grid-area: start-game;
   padding: 10px 15px;
   color: rgba(255, 255, 255, 0.8);
   background: #353535;
@@ -152,7 +153,7 @@ dialog #container button {
 }
 
 .dice-options {
-  grid-area: roll-dice;
+  grid-area: dice-options;
   display: flex;
   width: 100%;
   gap: 10px;
