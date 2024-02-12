@@ -114,13 +114,12 @@ dialog #container button {
   cursor: pointer;
 }
 
-.dice-container {
+.game-container {
   display: grid;
   grid-template-areas:
-    "dice-1 dice-2"
+    "dice-container dice-container"
     "roll-dice roll-dice";
-  gap: 20px;
-  padding: 30px;
+  padding: 10px 30px;
   background: #111;
   border-radius: 12.5px;
   align-items: center;
@@ -129,7 +128,7 @@ dialog #container button {
   justify-items: center;
 }
 
-#dice-container-gap {
+#game-container-gap {
   display: none;
 }
 
@@ -141,15 +140,15 @@ dialog #container button {
   border-radius: 5px;
   width: 100%;
   font-size: 23px;
+  margin-bottom: 12.5px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
-#dice-1 {
-  grid-template-areas: dice-1;
-}
-
-#dice-2 {
-  grid-template-areas: dice-2;
+.dice-container {
+  grid-area: dice-container;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
 }
 
 .dice-options {
@@ -159,6 +158,7 @@ dialog #container button {
   gap: 10px;
   margin-top: 10px;
   display: none;
+  margin-bottom: 8px;
 }
 
 .dice-option {
@@ -172,7 +172,7 @@ dialog #container button {
 }
 
 @media (width < 630px), (height < 610px) {
-  .dice-container,
+  .game-container,
   .numbers-container {
     width: 93vw;
     align-items: center;
@@ -180,7 +180,7 @@ dialog #container button {
     align-content: center;
     justify-content: center;
   }
-  .dice-container {
+  .game-container {
     justify-items: center;
   }
   .numbers-container {
@@ -202,7 +202,7 @@ dialog #container button {
     height: min(235px, 40vh, 40vw);
     width: min(235px, 40vh, 40vw);
   }
-  .dice-container,
+  .game-container,
   .numbers-container {
     width: min(115vh, 98vw);
   }
@@ -211,7 +211,7 @@ dialog #container button {
     font-size: 17px;
     margin-top: 15px;
   }
-  .dice-container {
+  .game-container {
     margin-bottom: 20px;
   }
   .numbers-container {
@@ -239,7 +239,7 @@ dialog #container button {
     .numbers-container {
       row-gap: 20px;
     }
-    .dice-container,
+    .game-container,
     .numbers-container {
       width: min(135vh, 98vw);
       padding: 20px;
