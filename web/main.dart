@@ -271,10 +271,7 @@ void setUpNumberElements() {
             if (totalNeeded == 0) {
               handleAbleToSubmit();
             }
-          } else {
-            print(total);
-            print(totalNeeded);
-          }
+          } else {}
         }
       });
       eventListeners.add(buttonClickSubscription);
